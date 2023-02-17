@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Calculadora de interés de cuenta de ahorros</title>
+  </head>
+  <body>
+    <h1>Calculadora de interés de cuenta de ahorros</h1>
+    <form>
+      <label for="monto-inicial">Monto inicial:</label>
+      <input type="number" id="monto-inicial" name="monto-inicial" required step="0.01">
+      <button type="button" onclick="calcularInteres()">Calcular</button>
+    </form>
+    <div id="resultados"></div>
+
+    <script>
+      function calcularInteres() {
+        const montoInicial = parseFloat(document.getElementById("monto-inicial").value);
+        const tasaInteresMensual = 0.0125;
+        let interesAnual = montoInicial * (1 + tasaInteresMensual) ** 12 - montoInicial;
+        let montoFinal = montoInicial + (250.00 * 11) + interesAnual;
+        montoFinal = montoFinal.toFixed(2); // Redondeamos el resultado a dos decimales
+
+        const resultados = document.getElementById("resultados");
+        resultados.innerHTML = `
+          <p>El interés anual es: ${interesAnual.toFixed(2)}</p>
+          <p>El monto final de la cuenta es: ${montoFinal} Bs.</p>
+        `;
+      }
+    </script>
+  </body>
+</html>
+
+
